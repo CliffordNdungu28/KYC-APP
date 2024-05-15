@@ -1,0 +1,240 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using KYC_APP.Static;
+@inject UserManager<ApplicationUser> UserManager;
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var userRoles = await UserManager.GetRolesAsync(user);
+}
+
+@if (userRoles.Contains(UserRoles.Admin))
+{
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#Document-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Document Manager</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="Document-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-controller="Portal" asp-action="DocumentTypeManager">
+                            <i class="bi bi-circle"></i><span>Document Types</span>
+                        </a>
+                    </li>
+                   
+                </ul>
+            </li><!-- End Tables Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#User-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>User Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="User-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-controller="Portal" asp-action="UserManager">
+                            <i class="bi bi-circle"></i><span>Service Provider Requests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Portal" asp-action="UserManager">
+                            <i class="bi bi-circle"></i><span>KYC Accounts</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Tables Nav -->
+
+
+            <li class="nav-heading">Pages</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-faq.html">
+                    <i class="bi bi-question-circle"></i>
+                    <span>F.A.Q</span>
+                </a>
+            </li><!-- End F.A.Q Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-contact.html">
+                    <i class="bi bi-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+
+
+
+
+           
+
+
+
+
+
+
+
+        </ul>
+
+    </aside>
+
+    <!-- End Sidebar-->
+}
+else if (userRoles.Contains(UserRoles.User))
+{
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#Document-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Document Manager</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="Document-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    
+                    <li>
+                        <a asp-controller="Portal" asp-action="ProviderManager">
+                            <i class="bi bi-circle"></i><span>Document Requests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Portal" asp-action="DocumentManager">
+                            <i class="bi bi-circle"></i><span>Manage KYC Documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Tables Nav -->
+
+
+            <li class="nav-heading">Pages</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-faq.html">
+                    <i class="bi bi-question-circle"></i>
+                    <span>F.A.Q</span>
+                </a>
+            </li><!-- End F.A.Q Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-contact.html">
+                    <i class="bi bi-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+
+
+
+
+
+
+
+        </ul>
+
+    </aside>
+
+    <!-- End Sidebar-->
+}
+else if (userRoles.Contains(UserRoles.SP))
+{
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+           
+
+
+           
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#Database-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i><span>Database Manager</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="Database-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a asp-controller="Portal" asp-action="DatabaseManager">
+                            <i class="bi bi-circle"></i><span>Database</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Portal" asp-action="DatabaseManager">
+                            <i class="bi bi-circle"></i><span>Database Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Tables Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-grid"></i>
+                    <span>Developer</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#">
+                    <i class="bi bi-card-list"></i>
+                    <span>Billing</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-heading">Pages</li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-faq.html">
+                    <i class="bi bi-question-circle"></i>
+                    <span>F.A.Q</span>
+                </a>
+            </li><!-- End F.A.Q Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="pages-contact.html">
+                    <i class="bi bi-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+
+
+           
+
+
+
+
+
+
+
+        </ul>
+
+    </aside>
+
+    <!-- End Sidebar-->
+}
+

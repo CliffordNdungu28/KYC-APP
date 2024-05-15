@@ -1,0 +1,301 @@
+﻿@using KYC_APP.Data.ViewModels;
+@using KYC_APP.Data.Enums;
+@model RegisterVM;
+
+@{
+    ViewData["Title"] = "KYC APP";
+    Layout = "~/Views/Shared/_Layout-1.cshtml";
+}
+
+<div class="container">
+    <div class="header">
+        <h2>Create an Account</h2>
+    </div>
+    <div class="options">
+        <div class="option active" data-form="service-provider">Service Provider</div>
+        <div class="option" data-form="kyc-account">KYC Account</div>
+    </div>
+    <div class="form-groups">
+
+        <div class="form-group service-provider active">
+
+
+            <div class="progress-bar">
+                <div class="step">
+                    <p>Name</p>
+                    <div class="bullet">
+                        <span>1</span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+                <div class="step">
+                    <p>Contact</p>
+                    <div class="bullet">
+                        <span>2</span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+                <div class="step">
+                    <p>Company Details</p>
+                    <div class="bullet">
+                        <span>3</span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+                <div class="step">
+                    <p>Submit</p>
+                    <div class="bullet">
+                        <span>4</span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+            </div>
+            <div class="form-outer">
+                <form asp-action="Register">
+                    <div class="page slide-page">
+                        <div class="title">Basic Info:</div>
+                        <div class="field">
+                            <div class="label">First Name</div>
+                            <input type="text" name="Firstname" required>
+                            <span asp-validation-for="Firstname" class="text-danger"></span>
+                        </div>
+                        <div class="field">
+                            <div class="label">Last Name</div>
+                            <input type="text" name="Lastname" required>
+                            <span asp-validation-for="Lastname" class="text-danger"></span>
+                        </div>
+                        <div class="field">
+                            <div class="label">Fullname</div>
+                            <input type="text" name="FullName" required>
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                        <div class="field">
+                            <button class="firstNext next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <div class="title">Contact Info:</div>
+                        <div class="field">
+                            <div class="label">Email Address</div>
+                            <input type="tel" name="Email" required>
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="field">
+                            <div class="label">Phone Number</div>
+                            <input type="tel" name="PhoneNumber" required>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="field btns">
+                            <button class="prev-1 prev">Previous</button>
+                            <button class="next-1 next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <div class="title">Details of the institution:</div>
+                        <div class="field">
+                            <div class="label">Institution Name</div>
+                            <input type="tel" name="Institution" required>
+                            <span asp-validation-for="Institution" class="text-danger"></span>
+                        </div>
+                        <div class="field">
+
+
+                            <div class="label">Industry</div>
+
+                            <select asp-for="Category" class="form-control">
+                                @foreach (var category in Enum.GetValues(typeof(InstitutionCategories)))
+                                {
+                                    <option value="@category">@category</option>
+                                }
+                            </select>
+                            
+                        </div>
+                        <div class="field btns">
+                            <button class="prev-2 prev">Previous</button>
+                            <button class="next-2 next">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <div class="title">Login Details:</div>
+
+                        <div class="field">
+                            <div class="label">Password</div>
+                            <input type="password" name="Password" required>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="field">
+                            <div class="label">Confirm Password</div>
+                            <input type="password" name="ConfirmPassword" required>
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                            <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                            <div class="invalid-feedback">You must agree before submitting.</div>
+                        </div>
+                        <div class="field btns">
+                            <button class="prev-3 prev">Previous</button>
+                            <button id="submitServiceProvider" class="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+               
+            </div>
+           
+
+           
+
+        </div>
+
+
+
+        <div class="form-group kyc-account">
+
+
+            <div class="progress-bar">
+                <div class="step">
+                    <p>Name</p>
+                    <div class="kycbullet">
+                        <span>1</span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+                <div class="step">
+                    <p>Contact</p>
+                    <div class="kycbullet">
+                        <span>2</span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+                <div class="step">
+                    <p>Services Providers</p>
+                    <div class="kycbullet">
+                        <span>3</span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+                <div class="step">
+                    <p>Submit</p>
+                    <div class="kycbullet">
+                        <span>4</span>
+                    </div>
+                    <div class="check fas fa-check"></div>
+                </div>
+            </div>
+            <div class="form-outer">
+
+                <form asp-action="Register">
+
+                <div class="page kyc-slide-page">
+                        <div class="title">Basic Info:</div>
+                        <div class="field">
+                            <div class="label">First Name</div>
+                            <input type="text" name="Firstname" required>
+                            <span asp-validation-for="Firstname" class="text-danger"></span>
+                        </div>
+                   
+                    <div class="field">
+                        <div class="label">Last Name</div>
+                        <input type="text" name="Lastname" required>
+                        <span asp-validation-for="Lastname" class="text-danger"></span>
+                    </div>
+          
+            <div class="field">
+                <div class="label">Fullname</div>
+                <input type="text" name="Fullname" required>
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+       
+        <div class="field">
+            <button class="kyc-firstNext next">Next</button>
+        </div>
+    </div>
+
+                 <div class="page">
+        <div class="title">Contact Info:</div>
+        <div class="field">
+            <div class="label">Email Address</div>
+            <input type="text" name="Email" required>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+   
+    <div class="field">
+        <div class="label">Phone Number</div>
+     
+                            <input type="tel" name="PhoneNumber" required>
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="field btns">
+        <button class="kyc-prev-1 prev">Previous</button>
+        <button class="kyc-next-1 next">Next</button>
+    </div>
+</div>
+
+                <div class="page">
+    <div class="title">Select are you interested in sharing your KYC with? (Optional)</div>
+    <div class="field">
+        <div class="label">Institution Name</div>
+        <input type="text"  required>
+
+    </div>
+
+
+<div class="field btns">
+    <button class="kyc-prev-2 prev">Previous</button>
+    <button class="kyc-next-2 next">Next</button>
+</div>
+                    </div>
+
+                <div class="page">
+    <div class="title">Login Details:</div>
+
+    <div class="field">
+        <div class="label">Password</div>
+                            <input id="Password" asp-for="Password" class="form-control" />
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Password" class="text-danger">
+                                </span>
+                            </div>
+       
+    </div>
+
+<div class="field">
+    <div class="label">Confirm Password</div>
+                            <input id="ConfirmPassword" asp-for="ConfirmPassword" class="form-control" />
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger">
+                                </span>
+                            </div>
+</div>
+                      
+
+<div class="field btns">
+    <button class="kyc-prev-3 prev">Previous</button>
+    <button id="submitKYCAccount" class="submit">Submit</button>
+</div>
+                    </div>
+                </form>
+              </div>
+                   
+                   
+                
+              
+         </div>
+           
+            
+
+        </div>
+   
+    <div class="checker">
+        
+            <p class="small mb-0">Already have an account? <a asp-action="Login">Log in</a></p>
+      
+    </div>
+
+
+
+</div>
+<script src="~/assets/script.js"></script>

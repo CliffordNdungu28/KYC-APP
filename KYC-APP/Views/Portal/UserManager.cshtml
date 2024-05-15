@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "KYC APP";
+    Layout = "~/Views/Shared/_Layout-2.cshtml";
+}
+
+<main id="main" class="main">
+
+   
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">User Management</h5>
+              <p>Manage Requests, Service Providers ad KYC Accounts.</p>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">New Requests</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Service Providers</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">KYC Accounts</button>
+                </li>
+              </ul>
+              <div class="tab-content pt-2" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+				
+				<!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th>
+                      <b>D</b>ate
+                    </th>
+                    <th>Institution Name</th>
+					<th>Firstname</th>
+					<th>Email</th>
+					<th>Contact Number</th>
+					<th>Actions</th>
+					
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+				   <td>27/10/2024</td>
+                    <td>Botswana Insurance</td>
+                    <td>Clifford Ndungu</td>
+                    <td>ndungu@gmail.com</td>
+                    <td>+ 2677343992</td>
+                    <td> <button type="button" class="btn btn-primary">Approve</button>
+              <button type="button" class="btn btn-secondary">Hold</button></td>
+                  </tr>
+                  
+                  
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+				</div>
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                 <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+				  <th data-type="date" data-format="YYYY/DD/MM">Date</th>
+                   
+                    <th>Institution Name</th>
+                    <th>Fullname</th>
+					 <th>Email</th>
+					  <th>Contact Number</th>
+					   <th>Actions</th>
+				
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>28-02-2024</td>
+                    <td>IMARA</td>
+                    <td>Maatla Maedza</td>
+                    <td>maatla@gmail.com</td>
+                    <td>+2671744392</td>
+					 <td> <button type="button" class="btn btn-primary">Enable</button>
+              <button type="button" class="btn btn-secondary">Disable</button></td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+</div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+<!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+				   <th data-type="date" data-format="YYYY/DD/MM">Date</th>
+                    
+                    <th>Fullname</th>
+                    <th>Email</th>
+					    <th>Contact Number</th>
+						    <th>Actions</th>
+                  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>24-02-2024</td>
+                    <td>Shirlyn Ndungu</td>
+                    <td>Shirlyn@gmail.com</td>
+                    <td>+267 7473392</td>
+					<td> <button type="button" class="btn btn-primary">Enable</button>
+              <button type="button" class="btn btn-secondary">Disable</button></td>
+                  
+                  </tr>
+                
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+				</div>
+              </div><!-- End Default Tabs -->
+              
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->

@@ -1,0 +1,55 @@
+﻿@if (TempData["Status"] != null && TempData["Status"].ToString() == "success")
+{
+
+    <div class="alertsection">
+        <!-- Your alert content goes here -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-1"></i>
+            Document type created successfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+   
+}
+else if (TempData["Status"] != null && TempData["Status"].ToString() == "failure")
+{
+    <div class="alertsection">
+        <!-- Your alert content goes here -->
+
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-circle me-1"></i>
+        Failed to create document type. PLease Contact Support to get further assistance. 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    </div>
+}
+
+@if (TempData["ServiceProviderAdded"] != null && TempData["ServiceProviderAdded"].ToString() == "success")
+{
+
+    <div class="alertsection">
+        <!-- Your alert content goes here -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-1"></i>
+            Service Provider added succesfully.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+}
+else if (TempData["ServiceProviderAdded"] != null && TempData["ServiceProviderAdded"].ToString() == "failure")
+{
+    <div class="alertsection">
+        <!-- Your alert content goes here -->
+
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-circle me-1"></i>
+            Failed to Add Service Provider. PLease Contact Support to get further assistance.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+}
+
+

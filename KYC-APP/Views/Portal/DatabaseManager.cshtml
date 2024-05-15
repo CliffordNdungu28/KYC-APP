@@ -1,0 +1,494 @@
+﻿@using KYC_APP.Data.ViewModels;
+@model  DatabaseManagerViewModel;
+@{
+    ViewData["Title"] = "KYC APP";
+    Layout = "~/Views/Shared/_Layout-2.cshtml";
+}
+
+
+
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Database Manager</h5>
+
+                        <!-- Default Tabs -->
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Database</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Database Settings</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-2" id="myTabContent">
+
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="card-header">
+                                    <div class="search-bar">
+                                        <form class="search-form d-flex align-items-center" method="POST" action="#">
+                                            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                                            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+                                        </form>
+                                    </div><!-- End Search Bar -->
+                                </div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Fullname</th>
+                                            <th scope="col">Email address</th>
+                                            <th scope="col">Contact Number</th>
+                                            <th scope="col">Actions</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                          @foreach (var entry in Model.DatabaseListVM)
+                                             {           
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>@entry.fullname</td>
+                                            <td>@entry.Emailaddress</td>
+                                            <td>@entry.ContactNumber</td>
+                                            <td>
+
+
+                                                <button type="button" class="btn btn-info"><i class="bi bi-info-circle" data-bs-toggle="modal" data-bs-target="#modalDialogScrollable" data-bs-placement="top" title="View KYC Documents"></i></button>
+
+
+                                                <div class="modal" id="modalDialogScrollable">
+                                                    <div class="modal-dialog modal-dialog-scrollable">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">@entry.fullname</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <!-- Default Accordion -->
+                                                                <div class="accordion" id="accordionExample">
+                                                                    <div class="accordion-item">
+                                                                        <h2 class="accordion-header" id="headingOne">
+                                                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                                Personal Information
+                                                                            </button>
+                                                                        </h2>
+                                                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                                            <div class="accordion-body">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="accordion-item">
+                                                                        <h2 class="accordion-header" id="headingTwo">
+                                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                                Banking
+                                                                            </button>
+                                                                        </h2>
+                                                                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                                            <div class="accordion-body">
+
+                                                                                <!-- List group With badges -->
+                                                                                <ul class="list-group">
+                                                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                                        <button type="button" class="btn btn-link" data-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ExtralargeModal">Identity Document(ID)</button>
+
+                                                                                        <div class="modal" id="ExtralargeModal" >
+
+
+                                                                                            <div class="modal-dialog modal-xl">
+                                                                                                <div class="modal-content">
+                                                                                                    <div class="modal-header">
+                                                                                                        <h5 class="modal-title">Name</h5>
+                                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                                    </div>
+                                                                                                    <div class="modal-body">
+                                                                                                        PDF VIEWER
+                                                                                                    </div>
+                                                                                                    <div class="modal-footer">
+                                                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                                        <button type="button" class="btn btn-danger">Reject</button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div><!-- End Extra Large Modal-->
+
+
+
+                                                                                        <span class="badge bg-secondary rounded-pill">Archived</span>
+                                                                                    </li>
+                                                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                                        <button type="button" class="btn btn-link">Identity Document(ID)</button>
+
+                                                                                    </li>
+                                                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                                                        A third list item
+                                                                                        <span class="badge bg-primary rounded-pill">1</span>
+                                                                                    </li>
+                                                                                </ul><!-- End List With badges -->
+
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="accordion-item">
+                                                                        <h2 class="accordion-header" id="headingThree">
+                                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                                                Utilities
+                                                                            </button>
+                                                                        </h2>
+                                                                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                                                            <div class="accordion-body">
+                                                                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="accordion-item">
+                                                                        <h2 class="accordion-header" id="headingFour">
+                                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                                                Agreements
+                                                                            </button>
+                                                                        </h2>
+                                                                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                                                            <div class="accordion-body">
+                                                                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- End Default Accordion Example -->
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- End Modal Dialog Scrollable-->
+
+
+
+                           
+
+
+
+                                            </td>
+
+                                        </tr>
+                                        }
+
+                                     </tbody>
+                            </table>
+
+                        </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+
+
+                            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#smallModal">Create Document Type</button>
+
+                            <div class="modal fade" id="smallModal" tabindex="-1">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Create Custom Document Type</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form asp-action="CreateCustomDocumentTypes" novalidate class="row g-3">
+                                                <div class="col-12">
+                                                    <label for="inputNanme4" class="form-label">Document Name</label>
+                                                    <input asp-for="@Model.AddCustomDocumentTypeVM.Name" name="Name" type="text" class="form-control" id="inputNanme4">
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputNanme4" class="form-label">Description</label>
+
+
+                                                    <textarea asp-for="@Model.AddCustomDocumentTypeVM.Description" name="Description" class="form-control" style="height: 100px"></textarea>
+                                                </div>
+
+                                                <div class="col-12">
+                                                    <label for="inputEmail4" class="form-label">Type</label>
+
+
+                                                    <select asp-for="@Model.AddCustomDocumentTypeVM.type" name="type" class="form-select" aria-label="Default select example">
+                                                        <option selected>PDF</option>
+                                                        <option value="1">Excel</option>
+                                                        <option value="2">CSV</option>
+                                                        <option value="3">xml</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputPassword4" class="form-label">Category</label>
+
+                                                    <select asp-for="@Model.AddCustomDocumentTypeVM.Category" name="Category" class="form-select" aria-label="Default select example">
+                                                        <option selected>Personal Identification</option>
+                                                        <option>Banking</option>
+                                                        <option>Utilities</option>
+                                                        <option>Agreements</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="inputAddress" class="form-label">Renewal Period</label>
+
+                                                    <select asp-for="@Model.AddCustomDocumentTypeVM.RenewalPeriod" name="RenewalPeriod" class="form-select" aria-label="Default select example">
+                                                        <option selected>3 Months</option>
+                                                        <option>6 Months</option>
+                                                        <option>1 Year</option>
+                                                        <option>3 years</option>
+                                                    </select>
+
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    
+                                                    <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
+                                                </div>
+                                            </form><!-- Vertical Form -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End Small Modal-->
+
+
+                            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#createDocumentModal">Set KYC Requirment</button>
+
+
+                            <div class="modal fade" id="createDocumentModal" tabindex="-1">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Set KYC Requirement</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form asp-action="AddKYCRequirement" novalidate class="row g-3">
+                                                <div class="col-12">
+                                                    <label for="inputNanme4" class="form-label">Document Type</label>
+
+                                                    <select asp-for="@Model.AddKYCRequirementsVM.documentname" name="documentname" class="form-select" aria-label="Default select example">
+                                                        @foreach (var customDocument in Model.AvailableDocumentsTypes)
+                                                        {
+                                                            <option value="@customDocument.documentname">@customDocument.documentname</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </form><!-- Vertical Form -->
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End Small Modal-->
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Custom Document Types</h5>
+                                      
+
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Document Name</th>
+                                                    <th scope="col">Document Type</th>
+                                                    <th scope="col">Renewal Date</th>
+
+                                                    <th scope="col">Date Created</th>
+                                                    <th scope="col">Actions</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach (var customDocument in Model.CustomDocumentTypes)
+{
+   
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>@customDocument.Documentname</td>
+                                                    <td>@customDocument.type</td>
+                                                    <td>@customDocument.RenewalPeriod</td>
+                                                    <td>@customDocument.DateCreated</td>
+                                                    <td>
+
+
+                                                        <button type="button" class="btn btn-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#verticalycentered">Disable</button>
+
+
+                                                        <div class="modal fade" id="verticalycentered" tabindex="-1">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">Disable Document Type</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Warning: You are about to disable your Custom Document Type. This will not affect your KYC Requirement, however you will not be able to add KYC Require of this Document Type. Click Disable to Proceed.
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary">Disable</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- End Vertically centered Modal-->
+
+
+                                                        <button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#DeleteCDT">Delete</button>
+
+
+                                                        <div class="modal fade" id="DeleteCDT" tabindex="-1">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">Delete Document Type</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Warning: You are about to delete your Custom Document Type. This will not affect your KYC Requirement, however you will not be able to add KYC Require of this Document Type. Click Delete to Proceed.
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary">Disable</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- End Vertically centered Modal-->
+
+
+
+
+
+                                                    </td>
+
+                                                </tr>
+                                                }
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Configured KYC Requirements</h5>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Document Name</th>
+                                                    <th scope="col">Date Created</th>
+                                                   
+
+                                                    <th scope="col">Actions</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                     @foreach (var customDocument in Model.RequirementsVM)
+{
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>@customDocument.Documentname</td>
+                                                    <td>@customDocument.Datecreated</td>
+
+                                                    <td>
+
+                                                        <button type="button" class="btn btn-secondary rounded-pill" data-bs-toggle="modal" data-bs-target="#DisableKYC">Disable</button>
+
+                                                    
+
+
+                                                        <div class="modal fade" id="DisableKYC" tabindex="-1">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">Disable KYC Requirement</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Warning: You are about to disable your KYC Requirement. Requests will be put on hold until the the requirement is enabled. 
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-danger">Disable</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- End Vertically centered Modal-->
+
+
+                                                        <button type="button" class="btn btn-danger rounded-pill" data-bs-toggle="modal" data-bs-target="#DeleteKYC">Delete</button>
+
+
+
+
+                                                        <div class="modal fade" id="DeleteKYC" tabindex="-1">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title">Delete KYC Requirement</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        Warning: You are about to delete your KYC Requirement. This will permantely remove the KYC Requirement from your Profile. Click Delete to Proceed. 
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-danger">Disable</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- End Vertically centered Modal-->
+
+
+
+
+
+                                                    </td>
+
+                                                </tr>
+                                                }
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                               
+                              
+                            </div><!-- End Default Tabs -->
+
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+               
+
+
+            </div>
+    </section>
